@@ -20,7 +20,6 @@ SELECT
 	Categoria,
 	Proveedor
 FROM listadoProductos
---WHERE Categoria='Beverages'
 ORDER BY Categoria DESC;
 
 
@@ -39,7 +38,7 @@ FROM
 INNER JOIN Categories c
 ON p.CategoryID = c.CategoryID
 LEFT JOIN [Order Details] od
-ON p.ProductID = od.ProductID and p.UnitsOnOrder!=0;
+ON p.ProductID = od.ProductID;
 
 --- Consulta de la vista modificada
 SELECT 
@@ -52,6 +51,7 @@ ORDER BY Categoria DESC;
 
 -----| EJERCICIO #3 |-----
 --Modificar la vista anterior Utilizando FullJOIN
+
 ALTER VIEW listadoProductos
 AS 
 SELECT 
@@ -63,15 +63,9 @@ FROM
 FULL JOIN Categories c
 ON p.CategoryID = c.CategoryID
 FULL JOIN [Order Details] od
-ON p.ProductID = od.ProductID and p.UnitsOnOrder!=0;
+ON p.ProductID = od.ProductID;
+
 
 --- Consulta de la vista modificada
-SELECT 
-	Producto,
-	Categoria,
-	OrderID
-FROM listadoProductos
-ORDER BY Categoria DESC;
-
-SELECT * FROM Products
-
+SELECT * FROM listadoProductos
+SELECT * FROM Products 
